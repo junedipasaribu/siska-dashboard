@@ -1,6 +1,7 @@
 import React from "react";
 import TiketFilterCards from "./TiketFilterCards.jsx"
 import { useState } from "react";
+import {Link} from "react-router-dom";
 
 const dataTiket = [
     {
@@ -28,7 +29,7 @@ const dataTiket = [
     {
         no: "KFA/3128/A200/0000007360",
         status: "IN PROGRESS",
-        statusColor: "bg-indigo-500",
+        statusColor: "bg-gray-900",
         lastStatus: "Unit Operation Online Business & Digital Supporting",
         konfirmasi: "",
         bm: "UNIT BISNIS GORONTALO",
@@ -39,7 +40,7 @@ const dataTiket = [
     {
         no: "KFA/3128/A200/0000003185",
         status: "IN PROGRESS",
-        statusColor: "bg-indigo-500",
+        statusColor: "bg-gray-900",
         lastStatus: "Unit Operation Excellent & Performance Wilayah II",
         konfirmasi: "",
         bm: "UNIT BISNIS GORONTALO",
@@ -84,13 +85,17 @@ export default function Ticket() {
     };
     return (
         <div className="p-6 bg-linear-to-br bg-slate-800 to-slate-900 min-h-screen rounded-xl shadow-xl">
+            <div className="flex justify-between items-center">
+                <h2 className="text-2xl mb-4 flex justify-between">List Tiket</h2>
+                <Link to="/tiket/create" className="bg-orange-500 text-white px-4 py-2 rounded m-5">+ Tiket Baru</Link>
+            </div>
             <div>
                 {/* Filter Card */}
                 <TiketFilterCards onFilterChange={handleFilterChange} />
             </div>
             <div className="mb-4 flex justify-between items-center">
-                <button className="bg-green-500 px-4 py-2 rounded">Show 100 rows ▼</button>
-                <button className="bg-green-500 text-white px-4 py-2 rounded">Excel</button>
+                <button className="bg-orange-500 px-4 py-2 rounded">Show 100 rows ▼</button>
+                <button className="bg-orange-500 text-white px-4 py-2 rounded">Excel</button>
             </div>
 
             {/* Tambahkan overflow-x-auto + min-w agar table bisa discroll */}
@@ -105,7 +110,7 @@ export default function Ticket() {
                         <th className="px-4 py-2 border">Nama BM</th>
                         <th className="px-4 py-2 border">Outlet</th>
                         <th className="px-4 py-2 border">Kategori</th>
-                        <th className="px-4 py-2 border">Status</th>
+                        <th className="px-4 py-2 border shadow-xl">Status</th>
                         <th className="px-4 py-2 border">Rangkuman</th>
                         <th className="px-4 py-2 border">Tanggal Ticket</th>
                         <th className="px-4 py-2 border">Assign SU</th>

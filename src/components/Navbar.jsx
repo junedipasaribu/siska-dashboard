@@ -1,5 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { HiMoon, HiSun, HiBell, HiViewGrid, HiArrowsExpand } from "react-icons/hi";
+import LogoSiskaPutih from "../assets/siska-main-putih.png";
+import LogoSiskaGelap from "../assets/siska-main.png";
+
 
 const Navbar = ({ isDarkMode, darkMode, setDarkMode }) => {
     const location = useLocation();
@@ -16,9 +19,9 @@ const Navbar = ({ isDarkMode, darkMode, setDarkMode }) => {
                 <div className="flex items-center justify-between h-16">
                     {/* Left section - Logo */}
                     <div className="flex-shrink-0 flex">
-                        <Link to="/" className="flex pl-[-20]">
+                        <Link to="/" className="flex" style={{ marginLeft: '-100px' }}>
                             <img
-                                src={isDarkMode ? "src/assets/siska-main-putih.png" : "src/assets/siska-main.png"}
+                                src={isDarkMode ? LogoSiskaPutih : LogoSiskaGelap}
                                 alt="Logo"
                                 className="h-12 w-auto"
                             />

@@ -10,9 +10,9 @@ const FilterCard = ({ title, options, selected, setSelected }) => {
     };
 
     return (
-        <div className="bg-linear-65 from-gray-800 to-gray-900 rounded shadow-xl p-4 mb-4">
+        <div className="bg-linear-65 from-gray-800 to-gray-900  rounded shadow-xl p-4 mb-4 border-1 border-sky-500">
             <h3 className="text-md font-semibold mb-2">{title}</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 ">
                 {options.map((option) => (
                     <button
                         key={option}
@@ -36,7 +36,6 @@ export default function TiketFilterCards({ onFilterChange }) {
     const [selectedStatus, setSelectedStatus] = React.useState([]);
     const [selectedPrioritas, setSelectedPrioritas] = React.useState([]);
 
-    // Auto trigger onFilterChange bila mana-mana filter berubah
     useEffect(() => {
         onFilterChange({
             outlet: selectedOutlet,
