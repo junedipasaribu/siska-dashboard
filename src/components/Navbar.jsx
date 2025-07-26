@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { HiMoon, HiSun, HiBell, HiViewGrid, HiArrowsExpand } from "react-icons/hi";
-import LogoSiskaPutih from "../assets/siska-main-putih.png";
+import LogoSiskaPutih from "../../siska-main-putih.png";
 import LogoSiskaGelap from "../assets/siska-main.png";
+import {Menu, MenuButton} from "@headlessui/react";
 
 
 const Navbar = ({ isDarkMode, darkMode, setDarkMode }) => {
@@ -53,6 +54,22 @@ const Navbar = ({ isDarkMode, darkMode, setDarkMode }) => {
                             {darkMode ? <HiSun className="text-xl" /> : <HiMoon className="text-xl" />}
                         </button>
 
+                        <div>
+                            <Menu as="div" className="relative ml-5 flex space-x-2" style={{ marginRight: '-80px' }}>
+                                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800">
+                                    <span className="absolute -inset-1.5" />
+                                    <span className="sr-only">Open user menu</span>
+                                    <img
+                                        alt=""
+                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                        className="size-8 rounded-full"
+                                    />
+                                </MenuButton>
+                                <h1 className="justify-between text-gray-900 dark:text-white text-base font-medium tracking-tight ">SuperUser Gorontalo</h1>
+                            </Menu>
+                        </div>
+
+
                         {/* Mobile menu button (optional) */}
                         <button className="md:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
                             <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,6 +78,7 @@ const Navbar = ({ isDarkMode, darkMode, setDarkMode }) => {
                         </button>
                     </div>
                 </div>
+
             </div>
         </nav>
     );

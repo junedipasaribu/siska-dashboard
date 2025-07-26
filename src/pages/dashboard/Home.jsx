@@ -28,7 +28,7 @@ const Home = () => {
     ];
 
     return (
-        <div className="p-6 ring-gray-900/5 min-h-screen shadow-xl rounded-xl bg-gray-700">
+        <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             <h2 className="text-2xl mb-4">Dashboard Superuser</h2>
 
             {/* Status Card */}

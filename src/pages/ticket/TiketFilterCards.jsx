@@ -10,7 +10,7 @@ const FilterCard = ({ title, options, selected, setSelected }) => {
     };
 
     return (
-        <div className="bg-linear-65 from-gray-800 to-gray-900  rounded shadow-xl p-4 mb-4 border-1 border-sky-500">
+        <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             <h3 className="text-md font-semibold mb-2">{title}</h3>
             <div className="flex flex-wrap gap-2 ">
                 {options.map((option) => (
