@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import {
-    HiGlobe,
     HiCreditCard,
     HiDocumentText,
     HiIdentification,
@@ -10,6 +9,7 @@ import {
     HiChevronDown,
     HiChevronUp
 } from "react-icons/hi";
+import { LuLayoutDashboard,LuChevronsLeft, LuChevronsRight, LuChevronsLeftRightEllipsis  } from "react-icons/lu";
 
 const Sidebar = ({ darkMode }) => {
     const [isOpen, setIsOpen] = useState(true);
@@ -18,9 +18,9 @@ const Sidebar = ({ darkMode }) => {
 
     const menuItems = [
         {
-            path: "/dashboard",
+            path: "/Home",
             name: "Dashboard",
-            icon: <HiGlobe />,
+            icon: <LuLayoutDashboard />,
             exact: true
         },
         {
@@ -28,7 +28,7 @@ const Sidebar = ({ darkMode }) => {
             name: "Ticket",
             icon: <HiCreditCard />,
             submenu: [
-                { path: "/Ticket", name: "Proses Ticket" },
+                { path: "/Ticket", name: "Proses Ticket"},
                 { path: "/AllTicket", name: "All Ticket" }
             ]
         },
@@ -72,7 +72,7 @@ const Sidebar = ({ darkMode }) => {
     };
 
     return (
-        <div className={`${darkMode ? "bg-gray-800" : "bg-blue-50"} ${
+        <div className={`${darkMode ? "bg-gray-800 shadow-xl ring-gray-900/5" : "bg-blue-50"} ${
             isOpen ? "w-64" : "w-20"
         } min-h-screen transition-all duration-300 border-r ${
             darkMode ? "border-gray-700" : "border-blue-100"
@@ -88,7 +88,7 @@ const Sidebar = ({ darkMode }) => {
                         : "text-blue-800 hover:bg-blue-100"
                 } transition-colors`}
             >
-                {isOpen ? "◀" : "▶"}
+                {isOpen ? <LuChevronsLeft /> : <LuChevronsRight />}
             </button>
 
             <nav className="mt-2">

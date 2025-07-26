@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import Home from "./pages/Home";
-import Ticket from "./pages/Ticket.jsx";
+import Home from "./pages/dashboard/Home.jsx";
+import Ticket from "./pages/ticket/Ticket.jsx";
 import Settings from "./pages/Settings";
 import Allticket from "./pages/Allticket.jsx";
 import {HiFastForward} from "react-icons/hi";
@@ -25,7 +25,7 @@ function App() {
                         <Sidebar darkMode={darkMode} />
                         <main className="flex-1 p-8 bg-gray-100 dark:bg-gray-800 dark:text-white overflow-auto">
                             <Routes>
-                                <Route path="/" element={<Home />} />
+                                <Route path="/Home" element={<Home />} />
                                 <Route path="/Ticket" element={<Ticket />} />
                                 <Route path="/Allticket" element={<Allticket />} />
                                 <Route path="/Report" element={<Report />} />
