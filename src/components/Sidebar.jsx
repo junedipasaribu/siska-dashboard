@@ -98,15 +98,15 @@ const Sidebar = ({ darkMode }) => {
                             <>
                                 <button
                                     onClick={() => toggleSubmenu(index)}
-                                    className={`flex items-center w-full p-3 mx-2 rounded-lg ${
-                                        isOpen ? "px-4" : "px-2 justify-center"
+                                    className={`flex items-center justify-center w-full p-3 mx-2 rounded-lg ${
+                                        isOpen ? "px-4 justify-start" : "px-2 justify-center"
                                     } ${
                                         darkMode
                                             ? "text-gray-300 hover:bg-gray-700"
                                             : "text-blue-800 hover:bg-blue-100"
                                     } transition-colors duration-200 mb-1`}
                                 >
-                  <span className="text-lg">
+                  <span className="text-lg flex items-center justify-center w-6 h-6">
                     {item.icon}
                   </span>
                                     {isOpen && (
@@ -125,7 +125,7 @@ const Sidebar = ({ darkMode }) => {
 
                                 {isOpen && openSubmenu === index && (
                                     <div
-                                        className={`ml-6 ${
+                                        className={`ml-11 ${
                                             darkMode ? "bg-gray-700" : "bg-blue-100"
                                         } rounded-lg p-1 mb-1`}
                                     >
@@ -136,12 +136,12 @@ const Sidebar = ({ darkMode }) => {
                                                 className={`block p-2 rounded-md ${
                                                     isActive(subItem.path)
                                                         ? darkMode
-                                                            ? "bg-gray-600 text-white"
-                                                            : "bg-blue-200 text-blue-800"
+                                                            ? "bg-blue-600 text-white"
+                                                            : "bg-blue-500 text-white"
                                                         : darkMode
                                                             ? "text-gray-300 hover:bg-gray-600"
                                                             : "text-blue-800 hover:bg-blue-200"
-                                                } transition-colors duration-200`}
+                                                } transition-colors duration-100`}
                                             >
                                                 {subItem.name}
                                             </Link>
@@ -152,8 +152,8 @@ const Sidebar = ({ darkMode }) => {
                         ) : (
                             <Link
                                 to={item.path}
-                                className={`flex items-center p-3 mx-2 rounded-lg ${
-                                    isOpen ? "px-4" : "px-2 justify-center"
+                                className={`flex items-center justify-center w-full p-3 mx-2 rounded-lg ${
+                                    isOpen ? "px-4 justify-start" : "px-2 justify-center"
                                 } ${
                                     isActive(item.path, item.exact)
                                         ? darkMode
@@ -165,7 +165,7 @@ const Sidebar = ({ darkMode }) => {
                                 } transition-colors duration-200 mb-1`}
                             >
                 <span
-                    className={`text-lg ${
+                    className={`text-lg flex items-center justify-center w-6 h-6 ${
                         isActive(item.path, item.exact)
                             ? "text-white"
                             : darkMode

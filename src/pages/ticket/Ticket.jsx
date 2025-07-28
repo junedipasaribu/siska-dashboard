@@ -87,7 +87,7 @@ export default function Ticket() {
         <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl mb-4 flex justify-between">List Tiket</h2>
-                <Link to="/tiket/create" className="bg-orange-500 text-white px-4 py-2 rounded m-5">+ Tiket Baru</Link>
+                <Link to="/ticket/CreateTicket" className="bg-orange-500 text-white px-4 py-2 rounded m-5">+ Tiket Baru</Link>
             </div>
             <div>
                 {/* Filter Card */}
@@ -121,7 +121,7 @@ export default function Ticket() {
                     </thead>
                     <tbody>
                     {filteredData.map((item, index) => (
-                        <tr key={index} className="hover:bg-gray-800">
+                        <tr key={index} className="hover:bg-gray-200">
                             <td className="border px-4 py-2 whitespace-nowrap">{item.no}</td>
                             <td className="border px-4 py-2 text-center">
                                 <button className="bg-blue-600 hover:bg-gray-400 px-2 py-1 rounded text-xs">
@@ -156,7 +156,7 @@ export default function Ticket() {
             </div>
 
             <div className="mt-4 flex justify-end">
-                <button className="border px-4 py-1 rounded bg-gray-900 hover:bg-gray-200">
+                <button className="border px-4 py-1 rounded bg-gray-400 hover:bg-gray-200">
                     Previous
                 </button>
                 <button className="ml-2 border px-4 py-1 rounded bg-blue-500 text-white">

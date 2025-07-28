@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import TrendChart from "../../pages/dashboard/TrendChart.jsx";
 import {
     CheckCircleIcon,
     ChatBubbleBottomCenterTextIcon,
@@ -84,14 +85,14 @@ const Home = () => {
             </div>
 
             {/* List Tiket */}
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-between items-center mb-4 p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
                 <h3 className="text-xl font-semibold">Daftar Tiket</h3>
                 <Link to="/tiket/create" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
                     + Tambah Tiket
                 </Link>
             </div>
 
-            <div className="bg-white rounded shadow p-4">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5 mb-5">
                 {dummyTickets.map((ticket) => (
                     <Link to={`/tiket/detail/${ticket.id}`} key={ticket.id} className="block p-3 border-b hover:bg-gray-100">
                         <div className="flex justify-between">
@@ -100,6 +101,9 @@ const Home = () => {
                         </div>
                     </Link>
                 ))}
+            </div>
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
+                <TrendChart />
             </div>
         </div>
     );

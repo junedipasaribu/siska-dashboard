@@ -13,6 +13,7 @@ import ListPegawai from "./pages/ListPegawai.jsx";
 import AssetManagement from "./pages/AssetManagement.jsx";
 import Faqs from "./pages/Faqs.jsx";
 import ListAsset from "./pages/ListAsset.jsx";
+import CreateTicket from "./pages/ticket/CreateTicket.jsx";
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
@@ -27,6 +28,7 @@ function App() {
                             <Routes>
                                 <Route path="/Home" element={<Home />} />
                                 <Route path="/Ticket" element={<Ticket />} />
+                                <Route path="/ticket/CreateTicket" element={<CreateTicket />} />
                                 <Route path="/Allticket" element={<Allticket />} />
                                 <Route path="/Report" element={<Report />} />
                                 <Route path="/Analytics" element={<Analytics />} />
