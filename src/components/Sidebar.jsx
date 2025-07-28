@@ -29,7 +29,7 @@ const Sidebar = ({ darkMode }) => {
             icon: <HiCreditCard />,
             submenu: [
                 { path: "/Ticket", name: "Proses Ticket"},
-                { path: "/AllTicket", name: "All Ticket" }
+                { path: "/ticket/AllTicket", name: "All Ticket" }
             ]
         },
         {

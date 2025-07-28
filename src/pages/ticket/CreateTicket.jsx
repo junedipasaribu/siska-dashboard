@@ -25,7 +25,6 @@ const CreateTicket = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Form dikirim:", formData);
-        // Kirim ke backend API jika sudah ada
     };
 
     return (
@@ -33,7 +32,7 @@ const CreateTicket = () => {
             <h2 className="text-xl font-bold mb-4">Detail Tiket</h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Baris 1: Outlet, Nama Pelapor, No HP */}
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <label className="block font-medium">Group / Outlet</label>
@@ -71,7 +70,7 @@ const CreateTicket = () => {
                     </div>
                 </div>
 
-                {/* Judul Permasalahan */}
+
                 <div>
                     <label className="block font-medium">Judul Permasalahan</label>
                     <input
@@ -84,7 +83,7 @@ const CreateTicket = () => {
                     />
                 </div>
 
-                {/* Upload File */}
+
                 <div>
                     <label className="block font-medium">Upload File <span className="text-red-500 text-sm">(image only)</span></label>
                     <input
@@ -96,7 +95,6 @@ const CreateTicket = () => {
                     />
                 </div>
 
-                {/* Switch Form Tambahan */}
                 <div className="flex items-center space-x-2">
                     <label className="block font-medium">Tampilkan Form User Request akun 7S?</label>
                     <label className="flex items-center cursor-pointer">
@@ -125,42 +123,134 @@ const CreateTicket = () => {
                 {/*    />*/}
                 {/*</div>*/}
 
-                {/* ID SAP & Nama Lengkap */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label className="block font-medium">ID SAP</label>
-                        <input
-                            name="idSap"
-                            type="text"
-                            value={formData.idSap}
-                            onChange={handleChange}
-                            placeholder="19990610A"
-                            className="w-full border border-gray-300 rounded px-3 py-2"
-                        />
+                {/* Form Mutasi User */}
+                {formData.showForm7S && (
+                    <div className="grid grid-rows-1 md:grid-rows-2 gap-4">
+                        <div>
+                            <label className="block font-medium mb-1">ID SAP</label>
+                            <input
+                                name="idSap"
+                                type="text"
+                                value={formData.idSap}
+                                onChange={handleChange}
+                                placeholder="19990610A"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Nama Lengkap</label>
+                            <input
+                                name="namaLengkap"
+                                type="text"
+                                value={formData.namaLengkap}
+                                onChange={handleChange}
+                                placeholder="Farly Cahyadi Lumula"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Email</label>
+                            <input
+                                name="email"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="antek.lumula@gmail.com"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Username</label>
+                            <p className="text-red-500 mb-2">(Kosongkan jika pengajuan user baru)</p>
+                            <input
+                                name="username"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Username"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Nomor HP</label>
+                            <input
+                                name="noHp"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Nomor Hp"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Permintaan</label>
+                            <input
+                                name="permintaan"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Permintaan"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Type Akun</label>
+                            <input
+                                name="typeakun"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Type akun"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Role Akun</label>
+                            <input
+                                name="roleakun"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Role Akun"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Outlet Asal</label>
+                            <input
+                                name="outletasal"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Outlet Asal"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Outlet Baru</label>
+                            <input
+                                name="outletbaru"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Outlet Baru"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-medium mb-1">Catatan</label>
+                            <input
+                                name="catatan"
+                                type="text"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Catatan"
+                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            />
+                        </div>
                     </div>
-                    <div>
-                        <label className="block font-medium">Nama Lengkap</label>
-                        <input
-                            name="namaLengkap"
-                            type="text"
-                            value={formData.namaLengkap}
-                            onChange={handleChange}
-                            placeholder="Farly Cahyadi Lumula"
-                            className="w-full border border-gray-300 rounded px-3 py-2"
-                        />
-                    </div>
-                    <div>
-                        <label className="block font-medium">Email</label>
-                        <input
-                            name="namaLengkap"
-                            type="text"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="antek.lumula@gmail.com"
-                            className="w-full border border-gray-300 rounded px-3 py-2"
-                        />
-                    </div>
-                </div>
+                )}
+
 
                 <button
                     type="submit"

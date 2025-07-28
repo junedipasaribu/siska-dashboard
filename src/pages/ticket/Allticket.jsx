@@ -39,8 +39,8 @@ const dataTiket = [
     },
     {
         no: "KFA/3128/A200/0000003185",
-        status: "IN PROGRESS",
-        statusColor: "bg-gray-900",
+        status: "CLOSED",
+        statusColor: "bg-green-600",
         lastStatus: "Unit Operation Excellent & Performance Wilayah II",
         konfirmasi: "",
         bm: "UNIT BISNIS GORONTALO",
@@ -61,7 +61,7 @@ const dataTiket = [
     }
 ];
 
-export default function Ticket() {
+export default function Allticket() {
     const [filteredData, setFilteredData] = useState(dataTiket);
 
     const handleFilterChange = (filters) => {
@@ -86,15 +86,22 @@ export default function Ticket() {
     return (
         <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             <div className="flex justify-between items-center">
-                <h2 className="text-2xl mb-4 flex justify-between">List Tiket</h2>
+                <h2 className="text-2xl mb-4 flex justify-between">All Ticket</h2>
                 <Link to="/ticket/CreateTicket" className="bg-orange-500 text-white px-4 py-2 rounded m-5">+ Tiket Baru</Link>
             </div>
             <div>
                 <TiketFilterCards onFilterChange={handleFilterChange} />
             </div>
             <div className="mb-4 flex justify-between items-center">
-                <button className="bg-gray-100 px-4 py-2 rounded">Show 100 rows ▼</button>
-                <button className="bg-orange-500 text-white px-4 py-2 rounded">Excel</button>
+                <div>
+                    <button className="bg-gray-100 px-4 py-2 rounded m-1">Show 100 rows ▼</button>
+                    <button className="bg-gray-100 px-4 py-2 rounded m-1">Copy ▼</button>
+                    <button className="bg-gray-100 px-4 py-2 rounded">Excel ▼</button>
+                </div>
+                <div>
+                    <label className="m-2">Search :</label>
+                    <input type="search" placeholder="Contoh : Aplication" className="border rounded"/>
+                </div>
             </div>
 
 
@@ -134,7 +141,6 @@ export default function Ticket() {
                             <td className="border px-4 py-2">{item.bm}</td>
                             <td className="border px-4 py-2">{item.outlet}</td>
                             <td className="border px-4 py-2">{item.kategori}</td>
-                            {/*<td className="border px-4 py-2">{item.rangkuman}</td>*/}
                             <td className="border px-4 py-2">
                   <span
                       className={`text-white text-xs px-2 py-1 rounded whitespace-nowrap ${item.statusColor}`}

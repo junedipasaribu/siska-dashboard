@@ -4,9 +4,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/dashboard/Home.jsx";
 import Ticket from "./pages/ticket/Ticket.jsx";
-import Settings from "./pages/Settings";
-import Allticket from "./pages/Allticket.jsx";
-import {HiFastForward} from "react-icons/hi";
+import Allticket from "./pages/ticket/Allticket.jsx";
 import Report from "./pages/Report.jsx";
 import Analytics from "./pages/Analytics.jsx";
 import ListPegawai from "./pages/ListPegawai.jsx";
@@ -29,7 +27,7 @@ function App() {
                                 <Route path="/Home" element={<Home />} />
                                 <Route path="/Ticket" element={<Ticket />} />
                                 <Route path="/ticket/CreateTicket" element={<CreateTicket />} />
-                                <Route path="/Allticket" element={<Allticket />} />
+                                <Route path="/ticket/Allticket" element={<Allticket />} />
                                 <Route path="/Report" element={<Report />} />
                                 <Route path="/Analytics" element={<Analytics />} />
                                 <Route path="/ListPegawai" element={<ListPegawai />} />

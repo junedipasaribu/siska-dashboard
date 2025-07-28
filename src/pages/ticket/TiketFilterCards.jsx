@@ -54,7 +54,7 @@ export default function TiketFilterCards({ onFilterChange }) {
             />
             <FilterCard
                 title="Status Tiket"
-                options={["IN PROGRESS", "RESOLVED", "PENDING", "REJECT"]}
+                options={["IN PROGRESS", "RESOLVED", "PENDING", "REJECT", "CLOSED"]}
                 selected={selectedStatus}
                 setSelected={setSelectedStatus}
             />
