@@ -34,14 +34,19 @@ const ListPegawai   = () => {
     noHp: "",
   });
 
-  const [editingId, setEditingId] = useState(null);
-  const [newName, setNewName] = useState("");
+  const [showAddModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingData, setEditingData] = useState(null);
 
-  const [showModal, setShowModal] = useState(false);
-  
-  const handleChange = (e) => {
+   
+  const handleChange = (e, isEedit = false) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (isEedit) {
+      setEditingData((prev) => ({ ...prev, [name]: value }));
+    }
+    else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleAdd = (e) => {
@@ -63,19 +68,18 @@ const ListPegawai   = () => {
     setShowModal(false);
   };
 
-  const handleEdit = (id, currentName) => {
-    setEditingId(id);
-    setNewName(currentName);
+  const openEdiModal = (emp) => {
+    setEditingData({ ...emp });
+    setShowEditModal(true);
   };
 
-  const handleSave = (id) => {
+  const handleSaveEdit = (e) => {
+    e.preventDefault();
     setEmployees((prev) =>
-      prev.map((emp) =>
-        emp.id === id ? { ...emp, namaPegawai: newName } : emp
-      )
+      prev.map((emp) => (emp.id === editingData.id ? editingData : emp))
     );
-    setEditingId(null);
-    setNewName("");
+    setShowEditModal(false);
+    setEditingData(null);
   };
 
   const handleDelete = (id) => {
@@ -117,36 +121,17 @@ const ListPegawai   = () => {
               <td className="border p-2">{emp.namaBM}</td>
               <td className="border p-2">{emp.kodeOutlet}</td>
               <td className="border p-2">{emp.namaOutlet}</td>
-              <td className="border p-2">
-                {editingId === emp.id ? (
-                  <input
-                    type="text"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                    className="border px-2 py-1"
-                  />
-                ) : (
-                  emp.namaPegawai
-                )}
-              </td>
+              <td className="border p-2">{emp.namaPegawai}</td>
               <td className="border p-2">{emp.noHp}</td>
-              <td className="border p-2 flex gap-1">
-                {editingId === emp.id ? (
-                  <button
-                    onClick={() => handleSave(emp.id)}
-                    className="bg-green-500 text-white px-2 py-1 rounded"
-                  >
-                    Simpan
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => handleEdit(emp.id, emp.namaPegawai)}
-                    className="bg-yellow-400 text-white px-2 py-1 rounded"
-                  >
-                    Edit
-                  </button>
-                )}
+              <td className="border p-2 flex gap-2">
                 <button
+                  onClick={() => openEdiModal(emp)}
+                    className="bg-yellow-400 text-white px-2 py-1 rounded"
+                >
+                  Edit
+                </button>
+                <button
+            
                   onClick={() => handleDelete(emp.id)}
                   className="bg-red-500 text-white px-2 py-1 rounded"
                 >
@@ -164,95 +149,56 @@ const ListPegawai   = () => {
           )}
         </tbody>
       </table>
-        {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-[600px] max-w-full">
-            <h2 className="text-xl font-semibold mb-4">Tambah Data Pegawai</h2>
-            <form onSubmit={handleAdd} className="grid grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="npp"
-                placeholder="Kode NPP"
-                value={formData.npp}
-                onChange={handleChange}
-                required
-                className="border p-2 rounded"
-              />
-              <input
-                type="text"
-                name="kodeBM"
-                placeholder="Kode BM"
-                value={formData.kodeBM}
-                onChange={handleChange}
-                required
-                className="border p-2 rounded"
-              />
-              <input
-                type="text"
-                name="namaBM"
-                placeholder="Nama BM"
-                value={formData.namaBM}
-                onChange={handleChange}
-                required
-                className="border p-2 rounded"
-              />
-              <input
-                type="text"
-                name="kodeOutlet"
-                placeholder="Kode Outlet"
-                value={formData.kodeOutlet}
-                onChange={handleChange}
-                required
-                className="border p-2 rounded"
-              />
-              <input
-                type="text"
-                name="namaOutlet"
-                placeholder="Nama Outlet"
-                value={formData.namaOutlet}
-                onChange={handleChange}
-                required
-                className="border p-2 rounded"
-              />
-              <input
-                type="text"
-                name="namaPegawai"
-                placeholder="Nama Pegawai"
-                value={formData.namaPegawai}
-                onChange={handleChange}
-                required
-                className="border p-2 rounded"
-              />
-              <input
-                type="text"
-                name="noHp"
-                placeholder="Nomor HP"
-                value={formData.noHp}
-                onChange={handleChange}
-                required
-                className="border p-2 rounded"
-              />
-              <div className="col-span-2 flex justify-end gap-2 mt-4">
-                <button
-                  type="button"
-                  onClick={() => setShowModal(false)}
-                  className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400"
-                >
-                  Batal
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
-                >
-                  Tambah
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        {showAddModal && (
+        <Modal title="Tambah Data Pegawai" onClose={() => setShowAddModal(false)}>
+          <PegawaiForm data={formData} onChange={handleChange} onSubmit={handleAdd} />
+        </Modal>
+      )}
+
+      {/* MODAL EDIT */}
+      {showEditModal && editingData && (
+        <Modal title="Edit Data Pegawai" onClose={() => setShowEditModal(false)}>
+          <PegawaiForm
+            data={editingData}
+            onChange={(e) => handleChange(e, true)}
+            onSubmit={handleSaveEdit}
+          />
+        </Modal>
       )}
     </div>
   );
 };
+
+// Komponen Modal
+const Modal = ({ title, onClose, children }) => (
+  <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+    <div className="bg-white p-6 rounded-lg shadow-lg w-[600px] max-w-full">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">{title}</h2>
+        <button onClick={onClose} className="text-gray-500 hover:text-black text-xl">&times;</button>
+      </div>
+      {children}
+    </div>
+  </div>
+);
+
+// Komponen Form Reusable
+const PegawaiForm = ({ data, onChange, onSubmit }) => (
+  <form onSubmit={onSubmit} className="grid grid-cols-2 gap-4">
+    <input type="text" name="npp" placeholder="Kode NPP" value={data.npp} onChange={onChange} required className="border p-2 rounded" />
+    <input type="text" name="kodeBM" placeholder="Kode BM" value={data.kodeBM} onChange={onChange} required className="border p-2 rounded" />
+    <input type="text" name="namaBM" placeholder="Nama BM" value={data.namaBM} onChange={onChange} required className="border p-2 rounded" />
+    <input type="text" name="kodeOutlet" placeholder="Kode Outlet" value={data.kodeOutlet} onChange={onChange} required className="border p-2 rounded" />
+    <input type="text" name="namaOutlet" placeholder="Nama Outlet" value={data.namaOutlet} onChange={onChange} required className="border p-2 rounded" />
+    <input type="text" name="namaPegawai" placeholder="Nama Pegawai" value={data.namaPegawai} onChange={onChange} required className="border p-2 rounded" />
+    <input type="text" name="noHp" placeholder="Nomor HP" value={data.noHp} onChange={onChange} required className="border p-2 rounded" />
+    <div className="col-span-2 flex justify-end gap-2 mt-4">
+      <button type="submit" className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
+        Simpan
+      </button>
+    </div>
+  </form>
+);
+
 
 export default ListPegawai;
