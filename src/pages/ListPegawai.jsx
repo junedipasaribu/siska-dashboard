@@ -90,8 +90,8 @@ const ListPegawai   = () => {
   };
 
   return (
-    <div className="p-8 max-w-screen-lg mx-auto">
-      <h1 className="text-2xl font-bold mb-6">List Pegawai</h1>
+    <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
+      <h1 className="text-2xl font-light mb-6">List Pegawai</h1>
       <button
         onClick={() => setShowModal(true)}
         className="mb-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
