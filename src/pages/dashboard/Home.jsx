@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 const StatusCard = ({ title, value, icon, iconBg }) => (
-    <div className="flex items-center justify-between p-4 bg-white rounded shadow-md">
+    <div className="flex items-center justify-between p-4 bg-white rounded shadow-lg">
         <div>
             <h4 className="text-xl font-semibold text-gray-700">{value}</h4>
             <p className="text-sm text-gray-500">{title}</p>
@@ -87,7 +87,7 @@ const Home = () => {
             {/* List Tiket */}
             <div className="flex justify-between items-center mb-4 p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
                 <h3 className="text-xl font-semibold">Daftar Tiket</h3>
-                <Link to="/ticket/CreateTicket" className="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700">
+                <Link to="/ticket/CreateTicket" className="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 shadow-lg shadow-orange-500/35">
                     + Tambah Tiket
                 </Link>
             </div>

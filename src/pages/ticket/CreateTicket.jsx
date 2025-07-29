@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import TextEditor from '/src/components/TextEditor.jsx'
+import {Link} from "react-router-dom";
 
 const CreateTicket = () => {
     const [formData, setFormData] = useState({
@@ -35,7 +37,7 @@ const CreateTicket = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <label className="block font-medium">Group / Outlet</label>
+                        <label className="block font-medium mb-1">Group / Outlet</label>
                         <select
                             name="outlet"
                             value={formData.outlet}
@@ -47,7 +49,7 @@ const CreateTicket = () => {
                         </select>
                     </div>
                     <div>
-                        <label className="block font-medium">Nama Pelapor</label>
+                        <label className="block font-medium mb-1">Nama Pelapor</label>
                         <input
                             name="namaPelapor"
                             type="text"
@@ -58,7 +60,7 @@ const CreateTicket = () => {
                         />
                     </div>
                     <div>
-                        <label className="block font-medium">No HP Pelapor</label>
+                        <label className="block font-medium mb-1">No HP Pelapor</label>
                         <input
                             name="noHpPelapor"
                             type="text"
@@ -72,7 +74,7 @@ const CreateTicket = () => {
 
 
                 <div>
-                    <label className="block font-medium">Judul Permasalahan</label>
+                    <label className="block font-medium mb-1">Judul Permasalahan</label>
                     <input
                         name="judul"
                         type="text"
@@ -83,9 +85,8 @@ const CreateTicket = () => {
                     />
                 </div>
 
-
                 <div>
-                    <label className="block font-medium">Upload File <span className="text-red-500 text-sm">(image only)</span></label>
+                    <label className="block font-medium mb-1">Upload File <span className="text-red-500 text-sm">(image only)</span></label>
                     <input
                         name="file"
                         type="file"
@@ -113,15 +114,15 @@ const CreateTicket = () => {
                     </label>
                 </div>
 
-                {/* Keterangan */}
-                {/*<div>*/}
-                {/*    <label className="block font-medium mb-1">Keterangan</label>*/}
-                {/*    <ReactQuill*/}
-                {/*        value={formData.keterangan}*/}
-                {/*        onChange={(val) => setFormData({ ...formData, keterangan: val })}*/}
-                {/*        theme="snow"*/}
-                {/*    />*/}
-                {/*</div>*/}
+                <div>
+                    <label className="block font-medium mb-1">Keterangan</label>
+                    <TextEditor
+                        value={formData.keterangan}
+                        onChange={(val) => setFormData((prev) => ({ ...prev, keterangan: val }))
+                        }
+                        theme="snow"
+                    />
+                </div>
 
                 {/* Form Mutasi User */}
                 {formData.showForm7S && (
@@ -254,10 +255,16 @@ const CreateTicket = () => {
 
                 <button
                     type="submit"
-                    className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700"
+                    className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 m-2 shadow-xl shadow-orange-500/35"
                 >
                     Kirim Tiket
                 </button>
+                <Link
+                    to="/Ticket"
+                    className="bg-gray-100 text-gray-600 px-4 py-2 rounded hover:bg-gray-200 shadow-xl ring-gray-900/5"
+                >
+                    Close
+                </Link>
             </form>
         </div>
     );
