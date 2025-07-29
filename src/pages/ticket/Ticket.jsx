@@ -87,7 +87,7 @@ export default function Ticket() {
         <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl mb-4 flex justify-between">List Tiket</h2>
-                <Link to="/ticket/CreateTicket" className="bg-orange-500 text-white px-4 py-2 rounded m-5">+ Tiket Baru</Link>
+                <Link to="/ticket/CreateTicket" className="bg-orange-500 text-white px-4 py-2 rounded m-5 shadow-lg shadow-orange-500/35">+ Tiket Baru</Link>
             </div>
             <div>
                 <TiketFilterCards onFilterChange={handleFilterChange} />

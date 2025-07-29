@@ -5,7 +5,7 @@ import LogoSiskaGelap from "../assets/siska-main.png";
 import {Menu, MenuButton} from "@headlessui/react";
 
 
-const Navbar = ({ isDarkMode, darkMode, setDarkMode }) => {
+const Navbar = ({isDarkMode, darkMode, setDarkMode}) => {
     const location = useLocation();
 
     const navItems = [
@@ -15,7 +15,7 @@ const Navbar = ({ isDarkMode, darkMode, setDarkMode }) => {
     ];
 
     return (
-        <nav className={`${darkMode ? "bg-gray-800 border-b border-gray-700" : "bg-white border-b border-gray-200"} shadow-sm`}>
+        <nav className="bg-white dark:bg-gray-800 rounded-lg ring shadow-xl ring-gray-900/5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Left section - Logo */}

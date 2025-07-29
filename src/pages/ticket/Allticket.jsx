@@ -1,7 +1,8 @@
 import React from "react";
-import TiketFilterCards from "./TiketFilterCards.jsx"
 import { useState } from "react";
 import {Link} from "react-router-dom";
+import {LuClipboardCopy} from "react-icons/lu";
+
 
 const dataTiket = [
     {
@@ -62,41 +63,23 @@ const dataTiket = [
 ];
 
 export default function Allticket() {
-    const [filteredData, setFilteredData] = useState(dataTiket);
+    const [filteredData] = useState(dataTiket);
 
-    const handleFilterChange = (filters) => {
-        let filtered = dataTiket;
 
-        if (filters.outlet.length > 0) {
-            filtered = filtered.filter((item) => filters.outlet.includes(item.outlet));
-        }
-
-        if (filters.status.length > 0) {
-            filtered = filtered.filter((item) => filters.status.includes(item.status));
-        }
-
-        if (filters.prioritas.length > 0) {
-            filtered = filtered.filter((item) =>
-                filters.prioritas.includes(item.prioritas || "NORMAL")
-            );
-        }
-
-        setFilteredData(filtered);
-    };
     return (
         <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl mb-4 flex justify-between">All Ticket</h2>
-                <Link to="/ticket/CreateTicket" className="bg-orange-500 text-white px-4 py-2 rounded m-5">+ Tiket Baru</Link>
-            </div>
-            <div>
-                <TiketFilterCards onFilterChange={handleFilterChange} />
+                <Link to="/ticket/CreateTicket" className="bg-orange-500 text-white px-4 py-2 rounded m-5 shadow-lg shadow-orange-500/35">+ Tiket Baru</Link>
             </div>
             <div className="mb-4 flex justify-between items-center">
                 <div>
                     <button className="bg-gray-100 px-4 py-2 rounded m-1">Show 100 rows ▼</button>
-                    <button className="bg-gray-100 px-4 py-2 rounded m-1">Copy ▼</button>
-                    <button className="bg-gray-100 px-4 py-2 rounded">Excel ▼</button>
+                    <button className="items-center gap-2 px-4 py-2 bg-gray-100 rounded m-1">
+                        <LuClipboardCopy className="text-lg" />
+                        <span>Copy</span>
+                    </button>
+                    <button className="bg-gray-100 px-4 py-2 rounded">Excel</button>
                 </div>
                 <div>
                     <label className="m-2">Search :</label>
